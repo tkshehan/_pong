@@ -1,5 +1,7 @@
 # Pong
 
+[Play](https://github.com/tkshehan/pong/HTML)
+
 ## Patch Notes
 
 ### 1.0.1.2
