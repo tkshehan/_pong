@@ -34,8 +34,9 @@ func get_direction():
 
 func _on_PaddleCenter_body_entered(body: Node) -> void:
 	body.hit_stop()
+	body.connect("end_stop", self, "_on_ball_move")
 	$Sprite.set_frame(1)
 
-func _on_PaddleCenter_body_exited(_body: Node) -> void:
+func _on_ball_move():
 	$Sprite.set_frame(0)
 	set_global_position(Vector2(fixed_x, get_global_position().y))

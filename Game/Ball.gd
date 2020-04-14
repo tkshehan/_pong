@@ -5,6 +5,8 @@ var velocity = Vector2(1, 0)
 var max_speed = 800.0
 var in_net = false
 
+signal end_stop
+
 func _ready() -> void:
 	hit_stop()
 	
@@ -30,4 +32,5 @@ func hit_stop():
 
 func _on_Timer_timeout() -> void:
 	set_physics_process(true)
+	emit_signal("end_stop")
 
