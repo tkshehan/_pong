@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/LevelLines.png" type="Texture" id=1]
 [ext_resource path="res://Game/Goal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game/Actors/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Game/Actors/AI_Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Game/Actors/Net.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Game/Game.gd" type="Script" id=7]
 
@@ -196,5 +197,8 @@ margin_bottom = 14.0
 text = "Difficulty: 0"
 align = 1
 uppercase = true
+
+[node name="PauseMenu" parent="." instance=ExtResource( 5 )]
+visible = true
 [connection signal="goal" from="Goal_L/Net_L" to="." method="_on_Net_L_goal"]
 [connection signal="goal" from="Goal_R/Net_R" to="." method="_on_Net_R_goal"]
