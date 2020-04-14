@@ -1,10 +1,20 @@
-# Pong
+[Click Here To Play](https://tkshehan.github.io/pong/pong.html)
 
-[Play](https://github.com/tkshehan/pong/HTML)
+### Controls
+
+| Action | Key1 | Key2 |
+| -------------|:-------------:|:-------------:|
+| Paddle Up  | Up Arrow | W |
+| Paddle Down | Down Arrow | S |
+| Pause | Space | Escape |
 
 ## Patch Notes
 
-### 1.0.1.2
+### 0.0.2
+- allow game to be paused
 - increase initial ball speed from 50 to 100
 - decrease difficulty increases by half
 - dynamic hitstop when ball hits middle of paddle
+
+### 0.0.1
+- initial alpha build

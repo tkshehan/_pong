@@ -199,6 +199,5 @@ align = 1
 uppercase = true
 
 [node name="PauseMenu" parent="." instance=ExtResource( 5 )]
-visible = true
 [connection signal="goal" from="Goal_L/Net_L" to="." method="_on_Net_L_goal"]
 [connection signal="goal" from="Goal_R/Net_R" to="." method="_on_Net_R_goal"]

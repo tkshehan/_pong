@@ -4,7 +4,7 @@
 [ext_resource path="res://Game/Actors/Paddle.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3.98806, 24.6281 )
+extents = Vector2( 6, 23 )
 
 [node name="Paddle" type="KinematicBody2D"]
 collision_layer = 2
@@ -12,13 +12,9 @@ collision/safe_margin = 0.3
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 hframes = 2
-
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 0, -0.270811 )
-polygon = PoolVector2Array( -5.9522, -24.5467, -5.952, -35.944, 6.171, -35.944, 6.171, 36.062, -5.952, 36.062, -5.95219, 25.2382, 2.19, 25.238, 2.19, -24.547 )
+frame = 1
 
 [node name="PaddleCenter" type="Area2D" parent="."]
 gravity = 0.0
@@ -28,8 +24,9 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PaddleCenter"]
-position = Vector2( -0.433865, 0.0626736 )
-scale = Vector2( 1, 1.2 )
 shape = SubResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 6, 33, 6, -33, 3, -36, -3, -36, -6, -33, -6, -21, -1, -21, -1, 21, -6, 21, -6, 33, -3, 36, 3, 36 )
 [connection signal="body_entered" from="PaddleCenter" to="." method="_on_PaddleCenter_body_entered"]
 [connection signal="body_exited" from="PaddleCenter" to="." method="_on_PaddleCenter_body_exited"]
