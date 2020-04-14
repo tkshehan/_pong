@@ -5,7 +5,7 @@ var direction = Vector2(0, 0)
 var velocity = Vector2.ZERO
 const Acceleration = 0.2
 const Friction = 0.333
-var max_speed = 300
+export var max_speed = 300
 onready var fixed_x = get_global_position().x
 
 var stored_velocity = 0

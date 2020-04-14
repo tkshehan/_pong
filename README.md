@@ -11,6 +11,7 @@
 ## Patch Notes
 
 ### 0.0.2
+- bugfix: paddle animation didnt always match balls hitlag
 - updated paddle sprites and collision boxes
 - allow game to be paused
 - increase initial ball speed from 50 to 100
