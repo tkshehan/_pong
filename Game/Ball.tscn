@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/PongBall.png" type="Texture" id=1]
 [ext_resource path="res://Game/Ball.gd" type="Script" id=2]
+[ext_resource path="res://Game/BallSoundss.gd" type="Script" id=3]
+[ext_resource path="res://assets/sfx/ball/PongBall_01.wav" type="AudioStream" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.0
@@ -22,4 +24,10 @@ shape = SubResource( 1 )
 process_mode = 0
 wait_time = 0.02
 one_shot = true
+
+[node name="BallSounds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -20.0
+attenuation = 1.48378e-10
+script = ExtResource( 3 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

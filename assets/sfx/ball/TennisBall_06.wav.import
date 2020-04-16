@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TennisBall_06.wav-8c74a809f0420a92652d57bb446a27b5.sample"
+
+[deps]
+
+source_file="res://assets/sfx/ball/TennisBall_06.wav"
+dest_files=[ "res://.import/TennisBall_06.wav-8c74a809f0420a92652d57bb446a27b5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
