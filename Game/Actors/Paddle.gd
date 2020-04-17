@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	velocity = calculate_velocity(get_direction())
-	move_and_collide(velocity * delta)
+	var _err = move_and_collide(velocity * delta)
 
 func calculate_velocity(_direction: Vector2):
 	return Vector2(
@@ -35,7 +35,7 @@ func get_direction():
 
 func _on_PaddleCenter_body_entered(body: Node) -> void:
 	if (connected_ball != body):
-		body.connect("end_stop", self, "_on_ball_move")
+		var _err = body.connect("end_stop", self, "_on_ball_move")
 		connected_ball = body
 		
 	body.hit_stop()

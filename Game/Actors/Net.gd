@@ -5,7 +5,7 @@ signal goal
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.connect("body_entered", self, "on_body_entered")
+	var _err = self.connect("body_entered", self, "on_body_entered")
 
 
 func on_body_entered(body):
