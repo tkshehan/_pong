@@ -8,6 +8,9 @@ var difficulty = 1
 
 func _ready() -> void:
 	spawn_ball()
+	$PauseMenu.popup_centered()
+	get_tree().paused = true
+	
 
 func _on_Net_L_goal() -> void:
 	difficulty += 1
