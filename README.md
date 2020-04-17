@@ -10,13 +10,17 @@
 
 ## Patch Notes
 
+### 0.0.2a
+- added version number
+- game now starts paused
+
 ### 0.0.2
 - lowered ceiling
 - added some sound effects
 - increased player speed from 300 to 400
 - bugfix: paddle animation didnt always match balls hitlag
 - updated paddle sprites and collision boxes
-- allowed game to be paused
+- added pausing
 - various difficulty adjustments
 - hitstop when ball hits middle of paddle is now dynamic
 

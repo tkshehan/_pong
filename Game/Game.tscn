@@ -203,6 +203,17 @@ uppercase = true
 [node name="RoundTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 12.0
+margin_top = 286.0
+margin_right = 52.0
+margin_bottom = 300.0
+custom_colors/font_color = Color( 1, 1, 1, 0.290196 )
+text = "Ver. 0.0.2b"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="goal" from="Goal_L/Net_L" to="." method="_on_Net_L_goal"]
 [connection signal="goal" from="Goal_R/Net_R" to="." method="_on_Net_R_goal"]
 [connection signal="timeout" from="RoundTimer" to="." method="_on_RoundTimer_timeout"]
