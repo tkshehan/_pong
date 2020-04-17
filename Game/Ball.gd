@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 		velocity += collider_velocity
 
 func hit_stop():
-	$Timer.wait_time = max(0.05, abs((velocity.x / 3000)))
+	$Timer.wait_time = max(0.05, abs((velocity.x / 2000)))
 	print($Timer.wait_time)
 	$Timer.start()
 	set_physics_process(false)

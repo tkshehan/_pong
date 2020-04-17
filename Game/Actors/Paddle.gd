@@ -36,7 +36,10 @@ func _on_PaddleCenter_body_entered(body: Node) -> void:
 	body.hit_stop()
 	body.connect("end_stop", self, "_on_ball_move")
 	$Sprite.set_frame(1)
+	if abs(body.velocity.x / 2000) > 0.2:
+		$AudioStreamPlayer.play()
 
 func _on_ball_move():
 	$Sprite.set_frame(0)
 	set_global_position(Vector2(fixed_x, get_global_position().y))
+	$AudioStreamPlayer.stop()

@@ -28,6 +28,7 @@ func spawn_ball() -> void:
 		-100 if randi() % 2 else 100,
 		-rand if randi() % 2 else rand
 	)
+
 	call_deferred("add_child", current_ball)
 	$AI_Player/Paddle.set_target(current_ball)
 	

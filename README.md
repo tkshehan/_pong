@@ -11,13 +11,14 @@
 ## Patch Notes
 
 ### 0.0.2
+- added some sound effects
 - increased player speed from 300 to 400
 - bugfix: paddle animation didnt always match balls hitlag
 - updated paddle sprites and collision boxes
-- allow game to be paused
-- increase initial ball speed from 50 to 100
-- decrease difficulty ramping by half
-- dynamic hitstop when ball hits middle of paddle
+- allowed game to be paused
+- increased initial ball speed from 50 to 100
+- decreased difficulty ramping by half
+- hitstop when ball hits middle of paddle is now dynamic
 
 ### 0.0.1
 - initial alpha build

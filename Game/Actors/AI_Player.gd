@@ -1,6 +1,6 @@
 extends Paddle
 
-var target = Vector2(0,0)
+var target = self
 
 func _ready():
 	max_speed = 0

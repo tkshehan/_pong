@@ -199,5 +199,10 @@ align = 1
 uppercase = true
 
 [node name="PauseMenu" parent="." instance=ExtResource( 5 )]
+
+[node name="RoundTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 [connection signal="goal" from="Goal_L/Net_L" to="." method="_on_Net_L_goal"]
 [connection signal="goal" from="Goal_R/Net_R" to="." method="_on_Net_R_goal"]
+[connection signal="timeout" from="RoundTimer" to="." method="_on_RoundTimer_timeout"]
