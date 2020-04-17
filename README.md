@@ -15,6 +15,9 @@
 ## Patch Notes
 
 ### 0.0.3
+- set maximum and minimum ball speed
+- removed speed increasing on normal bounces
+- tightened angle of travel as speed increases
 - changed hitlag sound effect
 
 ### 0.0.2a

@@ -1,10 +1,15 @@
 extends KinematicBody2D
 
-
 var velocity = Vector2(1, 0)
-var max_speed = 800.0
 var in_net = false
 var waiting_destruction = false
+
+const MAX_VELOCITY = Vector2(2000.0, 200.0)
+var min_velocity = Vector2(0,0)
+const MAX_ANGLE = 45.0
+const ACCELERATION = 0.05
+
+const MIN_HITSTOP = 0.05
 
 signal end_stop
 
@@ -27,17 +32,24 @@ func _physics_process(delta: float) -> void:
 		play_sfx()
 		var bounce_direction = collision.get_normal()
 		var collider_velocity = collision.get_collider_velocity()
-		velocity.x += -5 if velocity.x < 0 else 1
 		velocity = velocity.bounce(bounce_direction)
 		velocity += collider_velocity
+	
+	var y_dir = 1 if velocity.y > 0 else -1	
+	var x_dir = 1 if velocity.x > 0 else -1
+	if abs(velocity.x) > min_velocity.x:
+		min_velocity.x = abs(velocity.x)
+	
+	velocity.y = min(abs(velocity.y), MAX_VELOCITY.y) * y_dir
+	velocity.x = max(abs(velocity.x), min_velocity.x) * x_dir
+	print(velocity.x, " ", min_velocity.x)
 
 func hit_stop():
-	$Timer.wait_time = max(0.05, abs((velocity.x / 2000)))
-	print($Timer.wait_time)
+	$Timer.wait_time = max(MIN_HITSTOP, abs((velocity.x + velocity.y) / 2000))
 	$Timer.start()
 	set_physics_process(false)
-	var direction = 1 if velocity.x > 0 else -1
-	velocity.x = lerp(velocity.x, direction * max_speed, 0.1)
+	var x_dir = 1 if velocity.x > 0 else -1
+	velocity.x = lerp(velocity.x, x_dir * MAX_VELOCITY.x, ACCELERATION)
 
 func _on_Timer_timeout() -> void:
 	set_physics_process(true)
