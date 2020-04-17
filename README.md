@@ -8,7 +8,14 @@
 | Paddle Down | Down Arrow | S |
 | Pause | Space | Escape |
 
+### Known Issues
+- when game is loaded in html, it is not always in focus
+- ball can be trapped between paddle and wall
+
 ## Patch Notes
+
+### 0.0.3
+- changed hitlag sound effect
 
 ### 0.0.2a
 - added version number

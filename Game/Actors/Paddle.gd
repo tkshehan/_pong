@@ -8,6 +8,7 @@ const Friction = 0.333
 export var max_speed = 300
 onready var fixed_x = get_global_position().x
 
+var connected_ball
 var stored_velocity = 0
 
 func _ready() -> void:
@@ -33,8 +34,11 @@ func get_direction():
 	return direction 
 
 func _on_PaddleCenter_body_entered(body: Node) -> void:
+	if (connected_ball != body):
+		body.connect("end_stop", self, "_on_ball_move")
+		connected_ball = body
+		
 	body.hit_stop()
-	body.connect("end_stop", self, "_on_ball_move")
 	$Sprite.set_frame(1)
 	if abs(body.velocity.x / 2000) > 0.2:
 		$AudioStreamPlayer.play()
