@@ -4,7 +4,7 @@ var current_ball
 const Center = Vector2(256,160)
 
 onready var ball = preload("res://Game/Ball.tscn")
-var difficulty = 0
+var difficulty = 1
 
 func _ready() -> void:
 	spawn_ball()

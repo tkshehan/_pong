@@ -8,3 +8,4 @@
 [node name="Paddle" parent="." instance=ExtResource( 1 )]
 rotation = 3.14159
 script = ExtResource( 2 )
+max_speed = 400
