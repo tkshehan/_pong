@@ -148,6 +148,7 @@ tile_data = PoolIntArray( 131072, 1610612736, 1, 131073, 0, 0, 131074, 0, 0, 131
 
 [node name="AI_Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 81, 160 )
+rotation = 3.14159
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 440, 160 )

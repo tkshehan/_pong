@@ -22,7 +22,8 @@ func _on_Net_R_goal() -> void:
 
 func spawn_ball() -> void:
 	get_node("Score/HBoxContainer/Label").set_text("Difficulty: " + str(difficulty))
-	$AI_Player/Paddle.max_speed = difficulty * 50
+	$AI_Player/Paddle.Acceleration = 0.05
+	$AI_Player/Paddle.max_speed = 100 + (50 * difficulty)
 	
 	current_ball = ball.instance()
 	current_ball.position = Center
