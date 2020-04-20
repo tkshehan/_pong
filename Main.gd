@@ -2,16 +2,25 @@ extends Node
 
 # don't forget to use stretch mode 'viewport' and aspect 'ignore'
 onready var viewport = get_viewport()
+onready var game = load("res://Game/Game.tscn")
 
 func _ready():
 	# Handle window resizing to maintain pixel stretching
 	var _err = get_tree().connect("screen_resized", self, "_screen_resized")
 	GameState.root_scene = self
 	
+func _on_start_1p():
+	GameState.num_of_players = 1
+	start_game()
+	
+func _on_start_2p():
+	GameState.num_of_players = 2
+	start_game()
+	
 func start_game():
 	$GUI.get_child(0).queue_free()
 	$World.add_child(
-		load("res://Game/Game.tscn").instance()
+		game.instance()
 	)
 
 func _screen_resized():

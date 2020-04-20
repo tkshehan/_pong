@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/tubes.tres" type="TileSet" id=1]
 [ext_resource path="res://Game/Goal.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Game/Actors/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Game/Actors/AI_Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Game/Actors/Paddle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Game/Actors/Net.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Game/Game.gd" type="Script" id=7]
@@ -23,12 +22,12 @@ collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 131072, 1610612736, 1, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, -1073741824, 1, 196608, -1610612736, 0, 196624, -1073741824, 0, 262144, -1610612736, 0, 262160, -1073741824, 0, 327680, -1610612736, 0, 327696, -1073741824, 0, 393216, -1610612736, 0, 393232, -1073741824, 0, 458752, -1610612736, 0, 458768, -1073741824, 0, 524288, -1610612736, 0, 524304, -1073741824, 0, 589824, -1610612736, 1, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 1 )
 
-[node name="AI_Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 81, 160 )
+[node name="Paddle_L" parent="." instance=ExtResource( 3 )]
+position = Vector2( 72, 156 )
 rotation = 3.14159
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 440, 160 )
+[node name="Paddle_R" parent="." instance=ExtResource( 3 )]
+position = Vector2( 448, 155 )
 
 [node name="Goal_L" parent="." instance=ExtResource( 2 )]
 position = Vector2( 53, 155 )

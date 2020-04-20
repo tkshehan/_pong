@@ -6,7 +6,7 @@ var velocity = Vector2.ZERO
 var Acceleration = 0.2
 const Friction = 0.333
 export var max_speed = 300
-onready var fixed_x = get_global_position().x
+var fixed_x = get_global_position().x
 
 var connected_ball
 var stored_velocity = 0

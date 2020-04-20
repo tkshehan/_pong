@@ -1,4 +1,5 @@
 extends Paddle
+class_name AIPaddle
 
 var target = self
 

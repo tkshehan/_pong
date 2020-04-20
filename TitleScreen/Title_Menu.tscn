@@ -32,9 +32,9 @@ __meta__ = {
 }
 
 [node name="SinglePlayer" type="ToolButton" parent="HBoxContainer"]
-margin_top = 77.0
+margin_top = 66.0
 margin_right = 90.0
-margin_bottom = 94.0
+margin_bottom = 83.0
 grow_horizontal = 2
 custom_styles/focus = SubResource( 1 )
 custom_fonts/font = SubResource( 2 )
@@ -48,10 +48,27 @@ position = Vector2( -1.99999, 8.00001 )
 scale = Vector2( 0.700001, 0.700001 )
 texture = ExtResource( 3 )
 
-[node name="Quit" type="ToolButton" parent="HBoxContainer"]
-margin_top = 98.0
+[node name="TwoPlayer" type="ToolButton" parent="HBoxContainer"]
+margin_top = 87.0
 margin_right = 90.0
-margin_bottom = 115.0
+margin_bottom = 104.0
+grow_horizontal = 2
+custom_styles/focus = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Versus"
+align = 0
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/TwoPlayer"]
+visible = false
+position = Vector2( -1.99999, 8.00001 )
+scale = Vector2( 0.700001, 0.700001 )
+texture = ExtResource( 3 )
+
+[node name="Quit" type="ToolButton" parent="HBoxContainer"]
+margin_top = 108.0
+margin_right = 90.0
+margin_bottom = 125.0
 grow_horizontal = 2
 custom_styles/focus = SubResource( 1 )
 custom_fonts/font = SubResource( 2 )
@@ -66,5 +83,7 @@ scale = Vector2( 0.700001, 0.700001 )
 texture = ExtResource( 3 )
 [connection signal="focus_entered" from="HBoxContainer/SinglePlayer" to="HBoxContainer/SinglePlayer" method="_on_ToolButton_focus_entered"]
 [connection signal="focus_exited" from="HBoxContainer/SinglePlayer" to="HBoxContainer/SinglePlayer" method="_on_ToolButton_focus_exited"]
+[connection signal="focus_entered" from="HBoxContainer/TwoPlayer" to="HBoxContainer/TwoPlayer" method="_on_ToolButton_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer/TwoPlayer" to="HBoxContainer/TwoPlayer" method="_on_ToolButton_focus_exited"]
 [connection signal="focus_entered" from="HBoxContainer/Quit" to="HBoxContainer/Quit" method="_on_ToolButton_focus_entered"]
 [connection signal="focus_exited" from="HBoxContainer/Quit" to="HBoxContainer/Quit" method="_on_ToolButton_focus_exited"]

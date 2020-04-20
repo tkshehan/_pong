@@ -2,5 +2,4 @@ extends Node
 
 var root_scene
 
-func start_game():
-	pass
+var num_of_players
