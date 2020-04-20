@@ -49,8 +49,6 @@ func hit_stop():
 	set_physics_process(false)
 	var x_dir = 1 if velocity.x > 0 else -1
 	velocity.x = lerp(velocity.x, x_dir * MAX_VELOCITY.x, ACCELERATION)
-	print(x_dir)
-	print(velocity.x)
 
 func _on_Timer_timeout() -> void:
 	set_physics_process(true)

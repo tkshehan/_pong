@@ -15,6 +15,7 @@
 ## Patch Notes
 
 ### 0.0.3
+- 2 player mode
 - added a title menu
 - set maximum and minimum ball speed
 - removed speed increasing on normal bounces

@@ -1,17 +1,27 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/tubes.tres" type="TileSet" id=1]
 [ext_resource path="res://Game/Goal.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game/Actors/Paddle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/F-Zero GBA Text 1.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Game/Actors/Net.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Game/Game.gd" type="Script" id=7]
+[ext_resource path="res://Game/World.gd" type="Script" id=8]
 
-[node name="Game" type="Node2D"]
-position = Vector2( 0, 12 )
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="Game" type="Node"]
 script = ExtResource( 7 )
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="World" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="TileMap" type="TileMap" parent="World"]
 position = Vector2( -12, -36 )
 scale = Vector2( 2, 2 )
 tile_set = ExtResource( 1 )
@@ -22,75 +32,96 @@ collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 131072, 1610612736, 1, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 131088, -1073741824, 1, 196608, -1610612736, 0, 196624, -1073741824, 0, 262144, -1610612736, 0, 262160, -1073741824, 0, 327680, -1610612736, 0, 327696, -1073741824, 0, 393216, -1610612736, 0, 393232, -1073741824, 0, 458752, -1610612736, 0, 458768, -1073741824, 0, 524288, -1610612736, 0, 524304, -1073741824, 0, 589824, -1610612736, 1, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 1 )
 
-[node name="Paddle_L" parent="." instance=ExtResource( 3 )]
+[node name="Paddle_L" parent="World" instance=ExtResource( 3 )]
 position = Vector2( 72, 156 )
-rotation = 3.14159
+rotation = -3.14159
 
-[node name="Paddle_R" parent="." instance=ExtResource( 3 )]
+[node name="Paddle_R" parent="World" instance=ExtResource( 3 )]
 position = Vector2( 448, 155 )
 
-[node name="Goal_L" parent="." instance=ExtResource( 2 )]
+[node name="Goal_L" parent="World" instance=ExtResource( 2 )]
 position = Vector2( 53, 155 )
 rotation = -1.5708
 scale = Vector2( 2.24294, 1.99964 )
 z_index = -1
 
-[node name="Net_L" parent="Goal_L" instance=ExtResource( 6 )]
+[node name="Net_L" parent="World/Goal_L" instance=ExtResource( 6 )]
 position = Vector2( -0.0135317, -16 )
 scale = Vector2( 6, 0.2 )
 
-[node name="Goal_R" parent="." instance=ExtResource( 2 )]
+[node name="Goal_R" parent="World" instance=ExtResource( 2 )]
 position = Vector2( 467, 155 )
 rotation = 1.5708
 scale = Vector2( 2.18431, 2 )
 z_index = -1
 
-[node name="Net_R" parent="Goal_R" instance=ExtResource( 6 )]
+[node name="Net_R" parent="World/Goal_R" instance=ExtResource( 6 )]
 position = Vector2( -0.379951, -16.125 )
 rotation = 3.14159
 scale = Vector2( 6, 0.2 )
 
-[node name="Score" type="Control" parent="."]
+[node name="HUD" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 215.0
-margin_top = -5.0
-margin_right = 215.0
-margin_bottom = -5.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Score"]
+[node name="Score" type="Control" parent="HUD"]
 anchor_right = 1.0
-margin_bottom = 14.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Score/HBoxContainer"]
-margin_right = 89.0
-margin_bottom = 14.0
-text = "Difficulty: 0"
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Score"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_right = -10.0
+margin_bottom = 30.0
+theme = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftLabel" type="Label" parent="HUD/Score/HBoxContainer"]
+margin_top = 1.0
+margin_right = 20.0
+margin_bottom = 29.0
+text = "0"
 align = 1
 uppercase = true
 
-[node name="PauseMenu" parent="." instance=ExtResource( 5 )]
+[node name="Control" type="Control" parent="HUD/Score/HBoxContainer"]
+margin_left = 24.0
+margin_right = 476.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
 
-[node name="RoundTimer" type="Timer" parent="."]
+[node name="RightLabel" type="Label" parent="HUD/Score/HBoxContainer"]
+margin_left = 480.0
+margin_top = 1.0
+margin_right = 500.0
+margin_bottom = 29.0
+text = "0"
+align = 1
+uppercase = true
+
+[node name="PauseMenu" parent="HUD" instance=ExtResource( 5 )]
+
+[node name="RoundTimer" type="Timer" parent="HUD"]
 wait_time = 2.0
 one_shot = true
 
-[node name="Label" type="Label" parent="."]
+[node name="Version" type="Label" parent="HUD"]
 margin_left = 12.0
 margin_top = 286.0
-margin_right = 52.0
+margin_right = 101.0
 margin_bottom = 300.0
 custom_colors/font_color = Color( 1, 1, 1, 0.290196 )
 text = "Ver. 0.0.3-dev"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="goal" from="Goal_L/Net_L" to="." method="_on_Net_L_goal"]
-[connection signal="goal" from="Goal_R/Net_R" to="." method="_on_Net_R_goal"]
-[connection signal="timeout" from="RoundTimer" to="." method="_on_RoundTimer_timeout"]
+[connection signal="goal" from="World" to="." method="_on_World_goal"]
+[connection signal="goal" from="World/Goal_L/Net_L" to="World" method="_on_Net_L_goal"]
+[connection signal="goal" from="World/Goal_R/Net_R" to="World" method="_on_Net_R_goal"]

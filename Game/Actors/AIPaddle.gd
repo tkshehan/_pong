@@ -2,6 +2,7 @@ extends Paddle
 class_name AIPaddle
 
 var target = self
+var difficulty = 1
 
 func set_target(_target):
 	target = _target
@@ -15,6 +16,3 @@ func get_direction():
 	else:
 		direction.y = 1 if direction_of_target.y > 0 else -1
 	return direction
-
-func get_grip_position():
-	return self.get_global_position().x + 17

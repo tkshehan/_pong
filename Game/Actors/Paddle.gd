@@ -5,8 +5,10 @@ var direction = Vector2(0, 0)
 var velocity = Vector2.ZERO
 var Acceleration = 0.2
 const Friction = 0.333
-export var max_speed = 300
+export var max_speed = 500
+
 var fixed_x = get_global_position().x
+var grip_position = fixed_x + 4
 
 var connected_ball
 var stored_velocity = 0
@@ -39,7 +41,7 @@ func _on_PaddleCenter_body_entered(body: Node) -> void:
 		connected_ball = body
 	
 	body.hit_stop()
-	body.set_global_position(Vector2(self.get_grip_position() - 10,body.get_global_position().y))
+	body.set_global_position(Vector2(grip_position - 10,body.get_global_position().y))
 	$Sprite.set_frame(1)
 	if abs(body.velocity.x / 2000) > 0.3:
 		$AudioStreamPlayer.play()
@@ -49,5 +51,5 @@ func _on_ball_move():
 	set_global_position(Vector2(fixed_x, get_global_position().y))
 	$AudioStreamPlayer.stop()
 
-func get_grip_position():
-	return self.get_global_position().x + 4
+func set_grip_position_offset(offset = 4):
+	grip_position = fixed_x + offset

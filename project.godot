@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Paddle",
 "class": "AIPaddle",
 "language": "GDScript",
-"path": "res://Game/Actors/AI_Player.gd"
+"path": "res://Game/Actors/AIPaddle.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Paddle",
@@ -20,14 +20,14 @@ _global_script_classes=[ {
 "path": "res://Game/Actors/Paddle.gd"
 }, {
 "base": "Paddle",
-"class": "Player_Paddle",
+"class": "PlayerPaddle",
 "language": "GDScript",
-"path": "res://Game/Actors/Player.gd"
+"path": "res://Game/Actors/PlayerPaddle.gd"
 } ]
 _global_script_class_icons={
 "AIPaddle": "",
 "Paddle": "",
-"Player_Paddle": ""
+"PlayerPaddle": ""
 }
 
 [application]
