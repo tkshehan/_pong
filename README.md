@@ -15,6 +15,7 @@
 ## Patch Notes
 
 ### 0.0.3
+- added a title menu
 - set maximum and minimum ball speed
 - removed speed increasing on normal bounces
 - tightened angle of travel as speed increases

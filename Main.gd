@@ -5,8 +5,14 @@ onready var viewport = get_viewport()
 
 func _ready():
 	# Handle window resizing to maintain pixel stretching
-	get_tree().connect("screen_resized", self, "_screen_resized")
+	var _err = get_tree().connect("screen_resized", self, "_screen_resized")
+	GameState.root_scene = self
 	
+func start_game():
+	$GUI.get_child(0).queue_free()
+	$World.add_child(
+		load("res://Game/Game.tscn").instance()
+	)
 
 func _screen_resized():
 	var window_size = OS.get_window_size()
@@ -38,20 +44,3 @@ func _screen_resized():
 
 	# attach the viewport to the rect we calculated
 	viewport.set_attach_to_screen_rect(Rect2(diffhalf, viewport.size * scale))
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-func start_game():
-	$World.start_game()
-
-
-func _on_Menu_quit_game():
-	get_tree().quit()
-
-
-func _on_Menu_start_game():
-	$GUI.remove_menu()
-	start_game()

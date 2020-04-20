@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://TitleScreen/Title_Menu.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/Coder's Crux.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/PongBall.png" type="Texture" id=3]
+[ext_resource path="res://TitleScreen/ToolButton.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[node name="Title_Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -46.0
+margin_top = -192.0
+margin_right = 44.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SinglePlayer" type="ToolButton" parent="HBoxContainer"]
+margin_top = 77.0
+margin_right = 90.0
+margin_bottom = 94.0
+grow_horizontal = 2
+custom_styles/focus = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Single Player"
+align = 0
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/SinglePlayer"]
+visible = false
+position = Vector2( -1.99999, 8.00001 )
+scale = Vector2( 0.700001, 0.700001 )
+texture = ExtResource( 3 )
+
+[node name="Quit" type="ToolButton" parent="HBoxContainer"]
+margin_top = 98.0
+margin_right = 90.0
+margin_bottom = 115.0
+grow_horizontal = 2
+custom_styles/focus = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Quit"
+align = 0
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/Quit"]
+visible = false
+position = Vector2( -1.99999, 8.00001 )
+scale = Vector2( 0.700001, 0.700001 )
+texture = ExtResource( 3 )
+[connection signal="focus_entered" from="HBoxContainer/SinglePlayer" to="HBoxContainer/SinglePlayer" method="_on_ToolButton_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer/SinglePlayer" to="HBoxContainer/SinglePlayer" method="_on_ToolButton_focus_exited"]
+[connection signal="focus_entered" from="HBoxContainer/Quit" to="HBoxContainer/Quit" method="_on_ToolButton_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer/Quit" to="HBoxContainer/Quit" method="_on_ToolButton_focus_exited"]
