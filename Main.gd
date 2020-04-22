@@ -17,6 +17,10 @@ func _on_start_2p():
 	GameState.num_of_players = 2
 	start_game()
 	
+func _on_start_0p():
+	GameState.num_of_players = 0
+	start_game()
+	
 func start_game():
 	$GUI.get_child(0).queue_free()
 	$World.add_child(

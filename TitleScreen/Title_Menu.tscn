@@ -32,9 +32,9 @@ __meta__ = {
 }
 
 [node name="SinglePlayer" type="ToolButton" parent="HBoxContainer"]
-margin_top = 66.0
+margin_top = 56.0
 margin_right = 90.0
-margin_bottom = 83.0
+margin_bottom = 73.0
 grow_horizontal = 2
 custom_styles/focus = SubResource( 1 )
 custom_fonts/font = SubResource( 2 )
@@ -49,9 +49,9 @@ scale = Vector2( 0.700001, 0.700001 )
 texture = ExtResource( 3 )
 
 [node name="TwoPlayer" type="ToolButton" parent="HBoxContainer"]
-margin_top = 87.0
+margin_top = 77.0
 margin_right = 90.0
-margin_bottom = 104.0
+margin_bottom = 94.0
 grow_horizontal = 2
 custom_styles/focus = SubResource( 1 )
 custom_fonts/font = SubResource( 2 )
@@ -65,10 +65,27 @@ position = Vector2( -1.99999, 8.00001 )
 scale = Vector2( 0.700001, 0.700001 )
 texture = ExtResource( 3 )
 
-[node name="Quit" type="ToolButton" parent="HBoxContainer"]
-margin_top = 108.0
+[node name="Demo" type="ToolButton" parent="HBoxContainer"]
+margin_top = 98.0
 margin_right = 90.0
-margin_bottom = 125.0
+margin_bottom = 115.0
+grow_horizontal = 2
+custom_styles/focus = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "CPU vs CPU"
+align = 0
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="HBoxContainer/Demo"]
+visible = false
+position = Vector2( -1.99999, 8.00001 )
+scale = Vector2( 0.700001, 0.700001 )
+texture = ExtResource( 3 )
+
+[node name="Quit" type="ToolButton" parent="HBoxContainer"]
+margin_top = 119.0
+margin_right = 90.0
+margin_bottom = 136.0
 grow_horizontal = 2
 custom_styles/focus = SubResource( 1 )
 custom_fonts/font = SubResource( 2 )
@@ -85,5 +102,7 @@ texture = ExtResource( 3 )
 [connection signal="focus_exited" from="HBoxContainer/SinglePlayer" to="HBoxContainer/SinglePlayer" method="_on_ToolButton_focus_exited"]
 [connection signal="focus_entered" from="HBoxContainer/TwoPlayer" to="HBoxContainer/TwoPlayer" method="_on_ToolButton_focus_entered"]
 [connection signal="focus_exited" from="HBoxContainer/TwoPlayer" to="HBoxContainer/TwoPlayer" method="_on_ToolButton_focus_exited"]
+[connection signal="focus_entered" from="HBoxContainer/Demo" to="HBoxContainer/Demo" method="_on_ToolButton_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer/Demo" to="HBoxContainer/Demo" method="_on_ToolButton_focus_exited"]
 [connection signal="focus_entered" from="HBoxContainer/Quit" to="HBoxContainer/Quit" method="_on_ToolButton_focus_entered"]
 [connection signal="focus_exited" from="HBoxContainer/Quit" to="HBoxContainer/Quit" method="_on_ToolButton_focus_exited"]
