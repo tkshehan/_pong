@@ -8,6 +8,9 @@ func _ready():
 	# Handle window resizing to maintain pixel stretching
 	var _err = get_tree().connect("screen_resized", self, "_screen_resized")
 	GameState.root_scene = self
+	if OS.get_name() == "HTML5":
+		$GUI/FocusWindow.visible = true
+
 	
 func _on_start_1p():
 	GameState.num_of_players = 1
@@ -22,7 +25,7 @@ func _on_start_0p():
 	start_game()
 	
 func start_game():
-	$GUI.get_child(0).queue_free()
+	$GUI/TitleScreen.queue_free()
 	$World.add_child(
 		game.instance()
 	)
@@ -57,3 +60,13 @@ func _screen_resized():
 
 	# attach the viewport to the rect we calculated
 	viewport.set_attach_to_screen_rect(Rect2(diffhalf, viewport.size * scale))
+
+func _notification(what) -> void:
+	match what:
+		MainLoop.NOTIFICATION_WM_FOCUS_IN:
+			$GUI/FocusWindow.visible = false
+			get_tree().paused = false
+		MainLoop.NOTIFICATION_WM_FOCUS_OUT:
+			$GUI/FocusWindow.visible = true
+			get_tree().paused = true
+

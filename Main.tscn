@@ -6,6 +6,8 @@
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 
+[node name="World" type="Node2D" parent="."]
+
 [node name="GUI" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,6 +15,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title Screen" parent="GUI" instance=ExtResource( 2 )]
+[node name="TitleScreen" parent="GUI" instance=ExtResource( 2 )]
 
-[node name="World" type="Node2D" parent="."]
+[node name="FocusWindow" type="ColorRect" parent="GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.352941 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GUI/FocusWindow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Not In Focus, Click Inside To Resume"
+align = 1
+valign = 1
