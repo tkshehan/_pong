@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 	if in_net:
 		$CollisionShape2D.queue_free()
 		$Sprite.queue_free()
+		emit_signal("end_stop")
 		var _err = $BallSounds.connect("finished", self, "queue_free")
 		waiting_destruction = true
 		return
