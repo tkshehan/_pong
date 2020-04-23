@@ -3,9 +3,9 @@ class_name Paddle
 
 var direction = Vector2(0, 0)
 var velocity = Vector2.ZERO
-var Acceleration = 0.2
-const Friction = 0.333
-export var max_speed = 500
+var acceleration = 0.2
+const FRICTION = 0.333
+var max_speed = 500
 
 var fixed_x = get_global_position().x
 var grip_position = fixed_x + 4
@@ -28,14 +28,14 @@ func calculate_velocity(_direction: Vector2):
 	
 func _calculate_lerp(_direction, _velocity):
 	if _direction == 0.0:
-		return lerp(_velocity, 0, Friction)
-	return lerp(_velocity, _direction * max_speed, Acceleration)
+		return lerp(_velocity, 0, FRICTION)
+	return lerp(_velocity, _direction * max_speed, acceleration)
 
 func get_direction(): 
 	# OVERRIDE THIS FUNCTION
 	return direction 
 
-func _on_PaddleCenter_body_entered(body: Node) -> void:
+func _on_PaddleCenter_body_entered(body: Node):
 	if (connected_ball != body):
 		var _err = body.connect("end_stop", self, "_on_ball_move")
 		connected_ball = body

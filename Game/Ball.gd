@@ -4,10 +4,10 @@ var velocity = Vector2(1, 0)
 var in_net = false
 var waiting_destruction = false
 
-const MAX_VELOCITY = Vector2(3000.0, 300.0)
+const MAX_VELOCITY = Vector2(3000.0, 200.0)
 var min_velocity = Vector2(0,0)
 const MAX_ANGLE = 45.0
-const ACCELERATION = 25
+const ACCELERATION = 50
 
 const MIN_HITSTOP = 0.05
 
@@ -30,6 +30,8 @@ func _physics_process(delta: float) -> void:
 
 	var collision = move_and_collide(velocity * delta)
 	if collision != null:
+		if collision.collider is AIPaddle:
+			collision.collider.on_bounce()
 		play_sfx()
 		var bounce_direction = collision.get_normal()
 		var collider_velocity = collision.get_collider_velocity()

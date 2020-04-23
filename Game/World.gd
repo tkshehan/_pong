@@ -3,6 +3,7 @@ extends Node
 var current_ball
 const Center = Vector2(256,160)
 signal goal(side)
+var last_goal = "none"
 
 onready var ball = preload("res://Game/Ball.tscn")
 
@@ -25,10 +26,12 @@ func _ready() -> void:
 
 func _on_Net_L_goal() -> void:
 	emit_signal("goal", "left")
+	last_goal = "left"
 	spawn_ball()
 
 func _on_Net_R_goal() -> void:
 	emit_signal("goal", "right")
+	last_goal = "right"
 	spawn_ball()
 
 func spawn_ball() -> void:
@@ -41,9 +44,11 @@ func spawn_ball() -> void:
 	)
 	call_deferred("add_child", current_ball)
 	if $Paddle_L is AIPaddle:
-		update_ai($Paddle_L)
+		update_ai($Paddle_L, last_goal == "left")
 	if $Paddle_R is AIPaddle:
-		update_ai($Paddle_R)
+		update_ai($Paddle_R, last_goal == "right")
 
-func update_ai(paddle):
+func update_ai(paddle, increase_difficulty: bool):
 	paddle.set_target(current_ball)
+	if increase_difficulty:
+		paddle.difficulty += 1
