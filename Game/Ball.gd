@@ -46,12 +46,10 @@ func _physics_process(delta: float) -> void:
 
 func hit_stop():
 	$Timer.wait_time = stepify(max(MIN_HITSTOP, abs((velocity.x) / 3000)), 0.1)
-	print($Timer.wait_time)
 	$Timer.start()
 	set_physics_process(false)
 	var x_dir = 1 if velocity.x > 0 else -1
 	velocity.x = (abs(velocity.x) + ACCELERATION) * x_dir
-	print(velocity.x)
 
 func _on_Timer_timeout() -> void:
 	set_physics_process(true)
