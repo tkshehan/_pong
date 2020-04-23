@@ -11,7 +11,7 @@ emission_box_extents = Vector3( 1, 100, 1 )
 flag_disable_z = true
 spread = 0.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 15.51
+initial_velocity = 15.5
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 color = Color( 0.760784, 0.760784, 0.760784, 0.360784 )
@@ -35,7 +35,7 @@ __meta__ = {
 [node name="Title_Animation" type="Node2D" parent="."]
 
 [node name="Particles2D" type="Particles2D" parent="Title_Animation"]
-position = Vector2( 640, 160 )
+position = Vector2( 600, 160 )
 scale = Vector2( -60.7433, 1.79412 )
 amount = 7
 lifetime = 0.7

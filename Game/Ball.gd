@@ -7,7 +7,7 @@ var waiting_destruction = false
 const MAX_VELOCITY = Vector2(3000.0, 300.0)
 var min_velocity = Vector2(0,0)
 const MAX_ANGLE = 45.0
-const ACCELERATION = 0.05
+const ACCELERATION = 25
 
 const MIN_HITSTOP = 0.05
 
@@ -45,11 +45,13 @@ func _physics_process(delta: float) -> void:
 	velocity.x = max(abs(velocity.x), min_velocity.x) * x_dir
 
 func hit_stop():
-	$Timer.wait_time = max(MIN_HITSTOP, abs((velocity.x + velocity.y) / 2000))
+	$Timer.wait_time = stepify(max(MIN_HITSTOP, abs((velocity.x) / 3000)), 0.1)
+	print($Timer.wait_time)
 	$Timer.start()
 	set_physics_process(false)
 	var x_dir = 1 if velocity.x > 0 else -1
-	velocity.x = lerp(velocity.x, x_dir * MAX_VELOCITY.x, ACCELERATION)
+	velocity.x = (abs(velocity.x) + ACCELERATION) * x_dir
+	print(velocity.x)
 
 func _on_Timer_timeout() -> void:
 	set_physics_process(true)

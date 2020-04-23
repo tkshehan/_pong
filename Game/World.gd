@@ -36,11 +36,14 @@ func spawn_ball() -> void:
 	current_ball.position = Center
 	var rand = 25 * (randi()%4 + 1)
 	current_ball.velocity = Vector2(
-		-100 if randi() % 2 else 100,
+		-225 if randi() % 2 else 225,
 		-rand if randi() % 2 else rand
 	)
 	call_deferred("add_child", current_ball)
 	if $Paddle_L is AIPaddle:
-		$Paddle_L.set_target(current_ball)
+		update_ai($Paddle_L)
 	if $Paddle_R is AIPaddle:
-		$Paddle_R.set_target(current_ball)
+		update_ai($Paddle_R)
+
+func update_ai(paddle):
+	paddle.set_target(current_ball)
