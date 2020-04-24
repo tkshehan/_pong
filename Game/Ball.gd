@@ -24,8 +24,12 @@ func _physics_process(delta: float) -> void:
 		$CollisionShape2D.queue_free()
 		$Sprite.queue_free()
 		emit_signal("end_stop")
-		var _err = $BallSounds.connect("finished", self, "queue_free")
 		waiting_destruction = true
+		if velocity.x / 2000 > 0.2:
+			$GoalSounds.play()
+			var _err = $GoalSounds.connect("finished", self, "queue_free")
+		else:
+			var _err = $BounceSounds.connect("finished", self, "queue_free")
 		return
 
 	var collision = move_and_collide(velocity * delta)
@@ -58,4 +62,4 @@ func _on_Timer_timeout() -> void:
 	emit_signal("end_stop")
 
 func play_sfx():
-	$BallSounds.play_sound()
+	$BounceSounds.play_sound()
