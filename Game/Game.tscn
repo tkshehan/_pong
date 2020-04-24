@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/tubes.tres" type="TileSet" id=1]
 [ext_resource path="res://Game/Goal.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Game/Actors/Net.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Game/Game.gd" type="Script" id=7]
 [ext_resource path="res://Game/World.gd" type="Script" id=8]
+[ext_resource path="res://Game/HUD.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 4 )
@@ -63,6 +64,7 @@ scale = Vector2( 6, 0.2 )
 [node name="HUD" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

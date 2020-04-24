@@ -26,7 +26,7 @@ func _on_start_0p():
 	
 func start_game():
 	$GUI/TitleScreen.queue_free()
-	$World.add_child(
+	$Game.add_child(
 		game.instance()
 	)
 

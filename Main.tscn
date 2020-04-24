@@ -6,7 +6,7 @@
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 
-[node name="World" type="Node2D" parent="."]
+[node name="Game" type="Node2D" parent="."]
 
 [node name="GUI" type="Control" parent="."]
 anchor_right = 1.0
