@@ -7,7 +7,7 @@ var acceleration = 0.2
 const FRICTION = 0.333
 var max_speed = 500
 
-var fixed_x = get_global_position().x
+var fixed_x = get_position().x
 var grip_position = fixed_x + 4
 
 var connected_ball

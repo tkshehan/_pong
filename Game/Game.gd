@@ -4,8 +4,7 @@ var scores = [0,0]
 
 func _ready():
 	$World.spawn_ball()
-	$HUD/PauseMenu.popup_centered()
-	$HUD.update_scores()
+	$HUD.game_start()
 
 func _on_World_goal(side) -> void:
 	if side == "left":
@@ -13,7 +12,7 @@ func _on_World_goal(side) -> void:
 	elif side == "right":
 		scores[0] += 1
 	if _is_game_over():
-		pass
+		$HUD.game_over(scores)
 	$HUD.update_scores(scores)
 
 func _is_game_over():

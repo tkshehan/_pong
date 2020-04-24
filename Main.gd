@@ -29,7 +29,12 @@ func start_game():
 	$Game.add_child(
 		game.instance()
 	)
-
+	
+func reset():
+	$Game.get_child(0).queue_free()
+	var title = load("res://TitleScreen/TitleScreen.tscn").instance()
+	$GUI.add_child(title, true)
+	
 func _screen_resized():
 	var window_size = OS.get_window_size()
 
