@@ -13,4 +13,6 @@ func game_start():
 	$PauseMenu.game_start()
 
 func game_over(scores: Array):
+	if GameState.num_of_players != 1:
+		update_scores(scores)
 	$PauseMenu.game_over(scores)

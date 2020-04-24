@@ -4,6 +4,7 @@ class_name AIPaddle
 var target = self
 var difficulty = 1
 var handicap = 10
+var grace_hits
 
 var default_max_speed = 400
 var default_acceleration = 0.15
@@ -20,12 +21,16 @@ func _init():
 
 func set_target(_target):
 	target = _target
-	reset_difficulty()
+	reset_handicap()
 
-func reset_difficulty():
+func reset_handicap():
 	handicap = 11 - difficulty
 	max_speed = default_max_speed
 	acceleration = default_acceleration
+	if difficulty < 10:
+		grace_hits = 3
+	else:
+		grace_hits = 4
 
 func get_direction():
 	if paused:
@@ -40,8 +45,11 @@ func get_direction():
 	return direction
 
 func on_bounce():
-	max_speed -= handicap * 2.5
-	acceleration = max(acceleration - handicap * 0.01, 0.05)
+	if grace_hits > 0:
+		grace_hits -= 1
+	else:
+		max_speed -= handicap * 2.5
+		acceleration = max(acceleration - handicap * 0.01, 0.05)
 	paused = true
 	timer.start()
 

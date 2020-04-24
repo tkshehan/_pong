@@ -13,7 +13,8 @@ func _on_World_goal(side) -> void:
 		scores[0] += 1
 	if _is_game_over():
 		$HUD.game_over(scores)
-	$HUD.update_scores(scores)
+	else:
+		$HUD.update_scores(scores)
 
 func _is_game_over():
 	if GameState.num_of_players == 1:

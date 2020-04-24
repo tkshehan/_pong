@@ -33,7 +33,7 @@ func game_over(scores):
 		$Label.text = "Congratulations\nYou Died " + str(scores[0]) + " times."
 	else:
 		var winner = "Player 1" if scores[0] >= 5 else "Player 2"
-		$Label.text = winner + " Wins."
+		$Label.text = winner + " Wins.\n\nPress Space"
 		
 	game_is_over = true
 	self.popup_centered()

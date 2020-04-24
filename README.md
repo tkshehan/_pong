@@ -1,4 +1,4 @@
-[Click Here To Play](https://tkshehan.github.io/pong/pong.html)
+[Click Here To Play](https://tkshehan.github.io/pong/pball.html)
 
 ### Controls
 
@@ -15,7 +15,7 @@
 
 ### 0.0.3
 - AI improvements
-- 2 player mode
+- added winstates and 2 player mode
 - added a title menu
 - set maximum and minimum ball speed
 - removed speed increasing on normal bounces

@@ -10,7 +10,9 @@ onready var ball = preload("res://Game/Ball.tscn")
 func _ready() -> void:
 	if GameState.num_of_players == 0:
 		$Paddle_L.set_script(AIPaddle)
+		$Paddle_L.difficulty = 6
 		$Paddle_R.set_script(AIPaddle)
+		$Paddle_R.difficulty = 6
 		
 	if GameState.num_of_players == 1:
 		$Paddle_L.set_script(AIPaddle)
@@ -18,8 +20,8 @@ func _ready() -> void:
 
 	if GameState.num_of_players == 2:
 		$Paddle_L.set_script(PlayerPaddle)
-		$Paddle_R.set_script(PlayerPaddle)
 		$Paddle_L.player_ID = "P1"
+		$Paddle_R.set_script(PlayerPaddle)
 		$Paddle_R.player_ID = "P2"
 		
 	$Paddle_L.set_grip_position_offset(17)
@@ -52,3 +54,4 @@ func update_ai(paddle, increase_difficulty: bool):
 	paddle.set_target(current_ball)
 	if increase_difficulty:
 		paddle.difficulty += 1
+		

@@ -40,7 +40,7 @@ margin_top = 288.0
 margin_right = 105.0
 margin_bottom = 302.0
 custom_colors/font_color = Color( 1, 1, 1, 0.341176 )
-text = "Ver 0.0.3 -dev"
+text = "Ver 0.0.3"
 __meta__ = {
 "_edit_use_anchors_": false
 }
