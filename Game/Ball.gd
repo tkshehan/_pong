@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_stopped and $Timer.is_stopped():
 		if collider.get_direction().y != 0:
-			velocity.y = MAX_VELOCITY.y * collider.get_direction().y
+			velocity.y += (50.0 * collider.get_direction().y)
 		is_stopped = false
 		
 	var collision = move_and_collide(velocity * delta, false)
@@ -46,9 +46,7 @@ func _physics_process(delta: float) -> void:
 		collider = collision.collider
 		play_sfx()
 		var bounce_direction = collision.get_normal()
-		var collider_velocity = collision.get_collider_velocity()
 		velocity = velocity.bounce(bounce_direction)
-		velocity += collider_velocity
 		
 		if collider is AIPaddle:
 			collider.on_hit()
