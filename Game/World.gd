@@ -24,7 +24,7 @@ func _ready() -> void:
 		$Paddle_R.set_script(PlayerPaddle)
 		$Paddle_R.player_ID = "P2"
 		
-	$Paddle_L.set_grip_position_offset(17)
+#	$Paddle_L.set_grip_position_offset(17)
 
 func _on_Net_L_goal() -> void:
 	emit_signal("goal", "left")

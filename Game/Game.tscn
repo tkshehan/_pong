@@ -35,7 +35,7 @@ tile_data = PoolIntArray( 131072, 1610612736, 1, 131073, 0, 0, 131074, 0, 0, 131
 
 [node name="Paddle_L" parent="World" instance=ExtResource( 3 )]
 position = Vector2( 72, 156 )
-rotation = -3.14159
+rotation = 3.14159
 
 [node name="Paddle_R" parent="World" instance=ExtResource( 3 )]
 position = Vector2( 448, 155 )

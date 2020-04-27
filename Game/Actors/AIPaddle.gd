@@ -4,7 +4,7 @@ class_name AIPaddle
 var target = self
 var difficulty = 1
 var handicap = 10
-var grace_hits
+var grace_hits = 3
 
 var default_max_speed = 400
 var default_acceleration = 0.15
@@ -44,7 +44,7 @@ func get_direction():
 		direction.y = 1 if direction_of_target.y > 0 else -1
 	return direction
 
-func on_bounce():
+func on_hit():
 	if grace_hits > 0:
 		grace_hits -= 1
 	else:

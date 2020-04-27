@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://Game/Actors/AIPaddle.gd"
 }, {
 "base": "KinematicBody2D",
+"class": "Ball",
+"language": "GDScript",
+"path": "res://Game/Ball.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "Paddle",
 "language": "GDScript",
 "path": "res://Game/Actors/Paddle.gd"
@@ -26,6 +31,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AIPaddle": "",
+"Ball": "",
 "Paddle": "",
 "PlayerPaddle": ""
 }
@@ -95,6 +101,7 @@ P2move_down={
 2d_physics/layer_2="paddle"
 2d_physics/layer_3="ball"
 2d_physics/layer_4="net"
+2d_physics/layer_5="bumper"
 
 [rendering]
 

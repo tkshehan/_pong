@@ -1,8 +1,12 @@
 extends KinematicBody2D
+class_name Ball
 
 var velocity = Vector2(1, 0)
 var in_net = false
 var waiting_destruction = false
+
+var collider = null
+var is_stopped = false
 
 const MAX_VELOCITY = Vector2(3000.0, 200.0)
 var min_velocity = Vector2(0,0)
@@ -25,22 +29,36 @@ func _physics_process(delta: float) -> void:
 		$Sprite.queue_free()
 		emit_signal("end_stop")
 		waiting_destruction = true
-		if velocity.x / 2000 > 0.2:
+		if abs(velocity.x) / 2000 > 0.2:
 			$GoalSounds.play()
 			var _err = $GoalSounds.connect("finished", self, "queue_free")
 		else:
 			var _err = $BounceSounds.connect("finished", self, "queue_free")
 		return
-
-	var collision = move_and_collide(velocity * delta)
+	
+	if is_stopped and $Timer.is_stopped():
+		if collider.get_direction().y != 0:
+			velocity.y = MAX_VELOCITY.y * collider.get_direction().y
+		is_stopped = false
+		
+	var collision = move_and_collide(velocity * delta, false)
 	if collision != null:
-		if collision.collider is AIPaddle:
-			collision.collider.on_bounce()
+		collider = collision.collider
 		play_sfx()
 		var bounce_direction = collision.get_normal()
 		var collider_velocity = collision.get_collider_velocity()
 		velocity = velocity.bounce(bounce_direction)
 		velocity += collider_velocity
+		
+		if collider is AIPaddle:
+			collider.on_hit()
+		
+		if collider.get_parent() is Paddle:
+			collider = collider.get_parent()
+			is_stopped = true
+			hit_stop()
+			if collider is AIPaddle:
+				collider.on_hit()
 	
 	var y_dir = 1 if velocity.y > 0 else -1	
 	var x_dir = 1 if velocity.x > 0 else -1
