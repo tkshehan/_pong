@@ -13,6 +13,11 @@
 
 ## Patch Notes
 
+### 0.0.4
+- AI improved to compensate for player ball control
+- physics reworked, ball is much easier to control
+- audio and visual queues added for single player
+
 ### 0.0.3
 - AI improvements
 - added winstates and 2 player mode
