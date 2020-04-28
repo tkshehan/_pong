@@ -70,7 +70,7 @@ func _notification(what) -> void:
 	match what:
 		MainLoop.NOTIFICATION_WM_FOCUS_IN:
 			$GUI/FocusWindow.visible = false
-			get_tree().paused = false
+			get_tree().paused = GameState.paused
 		MainLoop.NOTIFICATION_WM_FOCUS_OUT:
 			$GUI/FocusWindow.visible = true
 			get_tree().paused = true

@@ -25,7 +25,7 @@ var paused = false
 
 func _init():
 	sfx_player = AudioStreamPlayer2D.new()
-	sfx_player.volume_db = -10
+	sfx_player.volume_db = -15
 	add_child(sfx_player)
 	timer = Timer.new()
 	timer.wait_time = default_wait_time
@@ -65,7 +65,7 @@ func on_hit():
 		if shield == 0:
 			sfx_player.set_stream(crack_sound)
 			sfx_player.play()
-			if stamina >= 100:
+			if stamina > 100:
 				$Sprite.set_texture(strong_texture)
 			else:
 				$Sprite.set_texture(normal_texture)
@@ -73,6 +73,8 @@ func on_hit():
 		max_speed = default_max_speed * stamina * 0.01
 		acceleration = default_acceleration * stamina * 0.01
 		stamina -= 10
+		if stamina == 100:
+			$Sprite.set_texture(normal_texture)
 		if stamina == 30:
 			sfx_player.set_stream(break_sound)
 			sfx_player.play()

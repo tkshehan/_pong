@@ -16,9 +16,11 @@ func _input(event: InputEvent) -> void:
 				GameState.reset()
 
 func _on_popup():
+	GameState.paused = true
 	get_tree().paused = true
 
 func _on_hide():
+	GameState.paused = false
 	get_tree().paused = false
 
 func game_start():
