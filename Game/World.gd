@@ -23,8 +23,6 @@ func _ready() -> void:
 		$Paddle_L.player_ID = "P1"
 		$Paddle_R.set_script(PlayerPaddle)
 		$Paddle_R.player_ID = "P2"
-		
-#	$Paddle_L.set_grip_position_offset(17)
 
 func _on_Net_L_goal() -> void:
 	emit_signal("goal", "left")
@@ -37,7 +35,9 @@ func _on_Net_R_goal() -> void:
 	spawn_ball()
 
 func spawn_ball() -> void:
+	stop_lines()
 	current_ball = ball.instance()
+	current_ball.connect("ball_changed_direction", self, "start_lines")
 	current_ball.position = Center
 	var rand = 25 * (randi()%4 + 1)
 	current_ball.velocity = Vector2(
@@ -55,3 +55,15 @@ func update_ai(paddle, increase_difficulty: bool):
 	if increase_difficulty:
 		paddle.difficulty += 1
 		
+func start_lines(speed):
+	print(speed)
+	if speed > 1000:
+		$SpeedLines/Lines_Left.visible = true
+		$SpeedLines/Lines_Right.visible = false
+	if speed < -1000:
+		$SpeedLines/Lines_Left.visible = false
+		$SpeedLines/Lines_Right.visible = true
+
+func stop_lines():
+		$SpeedLines/Lines_Left.visible = false
+		$SpeedLines/Lines_Right.visible = false

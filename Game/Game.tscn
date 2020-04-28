@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/tubes.tres" type="TileSet" id=1]
 [ext_resource path="res://Game/Goal.tscn" type="PackedScene" id=2]
@@ -9,6 +9,18 @@
 [ext_resource path="res://Game/Game.gd" type="Script" id=7]
 [ext_resource path="res://Game/World.gd" type="Script" id=8]
 [ext_resource path="res://Game/HUD.gd" type="Script" id=9]
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 100, 1 )
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 15.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color = Color( 0.760784, 0.760784, 0.760784, 0.360784 )
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 4 )
@@ -60,6 +72,28 @@ z_index = -1
 position = Vector2( -0.379951, -16.125 )
 rotation = 3.14159
 scale = Vector2( 6, 0.2 )
+
+[node name="SpeedLines" type="Node2D" parent="World"]
+
+[node name="Lines_Left" type="Particles2D" parent="World/SpeedLines"]
+visible = false
+position = Vector2( 568, 160 )
+scale = Vector2( 60, 1.7 )
+amount = 7
+lifetime = 0.7
+preprocess = 10.0
+fixed_fps = 60
+process_material = SubResource( 3 )
+
+[node name="Lines_Right" type="Particles2D" parent="World/SpeedLines"]
+visible = false
+position = Vector2( -30, 160 )
+scale = Vector2( -60, 1.7 )
+amount = 7
+lifetime = 0.7
+preprocess = 10.0
+fixed_fps = 60
+process_material = SubResource( 3 )
 
 [node name="HUD" type="Control" parent="."]
 anchor_right = 1.0

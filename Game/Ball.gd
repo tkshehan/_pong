@@ -15,6 +15,7 @@ const ACCELERATION = 50
 
 const MIN_HITSTOP = 0.05
 
+signal ball_changed_direction(speed)
 signal end_stop
 
 func _ready() -> void:
@@ -57,6 +58,7 @@ func _physics_process(delta: float) -> void:
 			hit_stop()
 			if collider is AIPaddle:
 				collider.on_hit()
+		emit_signal("ball_changed_direction", velocity.x)
 	
 	var y_dir = 1 if velocity.y > 0 else -1	
 	var x_dir = 1 if velocity.x > 0 else -1

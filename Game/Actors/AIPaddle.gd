@@ -79,7 +79,6 @@ func on_hit():
 			sfx_player.set_stream(break_sound)
 			sfx_player.play()
 			$Sprite.set_texture(break_texture)
-	print(shield, " ", stamina)
 	paused = true
 	timer.start()
 
