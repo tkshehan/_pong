@@ -38,9 +38,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Pong"
+config/name="PibbyBall"
 run/main_scene="res://Main.tscn"
 boot_splash/use_filter=false
+config/icon="res://assets/PongBall.png"
 
 [autoload]
 
@@ -105,6 +106,8 @@ P2move_down={
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
 quality/2d/use_pixel_snap=true
 environment/default_clear_color=Color( 0.2, 0.2, 0.2, 1 )
 environment/default_environment="res://default_env.tres"

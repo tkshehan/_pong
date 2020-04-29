@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://TitleScreen/TitleScreen.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -14,8 +13,6 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="TitleScreen" parent="GUI" instance=ExtResource( 2 )]
 
 [node name="FocusWindow" type="ColorRect" parent="GUI"]
 visible = false
@@ -40,7 +37,7 @@ margin_top = 288.0
 margin_right = 105.0
 margin_bottom = 302.0
 custom_colors/font_color = Color( 1, 1, 1, 0.341176 )
-text = "Ver 0.0.3"
+text = "Ver 0.0.4"
 __meta__ = {
 "_edit_use_anchors_": false
 }

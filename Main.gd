@@ -10,7 +10,14 @@ func _ready():
 	GameState.root_scene = self
 	if OS.get_name() == "HTML5":
 		$GUI/FocusWindow.visible = true
+	
+	var splash_screen = load('res://SplashScreen.tscn').instance()
+	$GUI.add_child(splash_screen, true)
+	splash_screen.connect('tree_exited', self, 'load_title')
 
+func load_title():
+	var title = load("res://TitleScreen/TitleScreen.tscn").instance()
+	$GUI.add_child(title, true)
 	
 func _on_start_1p():
 	GameState.num_of_players = 1
@@ -32,8 +39,7 @@ func start_game():
 	
 func reset():
 	$Game.get_child(0).queue_free()
-	var title = load("res://TitleScreen/TitleScreen.tscn").instance()
-	$GUI.add_child(title, true)
+	load_title()
 	
 func _screen_resized():
 	var window_size = OS.get_window_size()
