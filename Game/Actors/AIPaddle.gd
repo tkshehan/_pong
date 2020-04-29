@@ -25,7 +25,7 @@ var paused = false
 
 func _init():
 	sfx_player = AudioStreamPlayer2D.new()
-	sfx_player.volume_db = -15
+	sfx_player.volume_db = -25
 	add_child(sfx_player)
 	timer = Timer.new()
 	timer.wait_time = default_wait_time
@@ -37,15 +37,30 @@ func set_target(_target):
 	reset_handicap()
 
 func reset_handicap():
-	stamina = (difficulty * 10) + 50
 	max_speed = default_max_speed
 	acceleration = default_acceleration
-	if difficulty < 10:
-		shield = 3
+	stamina = stamina_ammount(difficulty)
+	shield = shield_amount(difficulty)
+	if shield > 0:
+		$Sprite.set_texture(shield_texture)
 	else:
-		shield = 4
-	$Sprite.set_texture(shield_texture)
+		$Sprite.set_texture(normal_texture)
+		
+func stamina_ammount(difficult):
+	if difficulty <= 2: return 10 * difficulty + 60
+	if difficulty <= 5: return 10 * difficulty + 50
+	if difficulty <= 8: return 10 * difficulty + 50
+	if difficulty == 9: return 10 * difficulty + 50
+	if difficulty == 10: return 10 * difficulty + 50
+	return 0
 
+func shield_amount(difficulty):
+	if difficulty <= 2: return 0
+	if difficulty <= 5: return 2
+	if difficulty <= 8: return 3
+	if difficulty == 9: return 4
+	if difficulty == 10: return 5
+	return 0
 
 func get_direction():
 	if paused:
@@ -73,9 +88,9 @@ func on_hit():
 		max_speed = default_max_speed * stamina * 0.01
 		acceleration = default_acceleration * stamina * 0.01
 		stamina -= 10
-		if stamina == 100:
+		if stamina > 95 and stamina <= 100:
 			$Sprite.set_texture(normal_texture)
-		if stamina == 30:
+		if stamina <= 30 and stamina > 25:
 			sfx_player.set_stream(break_sound)
 			sfx_player.play()
 			$Sprite.set_texture(break_texture)
