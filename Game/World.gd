@@ -41,7 +41,7 @@ func spawn_ball() -> void:
 	current_ball.position = Center
 	var rand = 25 * (randi()%4 + 1)
 	current_ball.velocity = Vector2(
-		-225 if randi() % 2 else 225,
+		-255 if randi() % 2 else 255,
 		-rand if randi() % 2 else rand
 	)
 	call_deferred("add_child", current_ball)
@@ -56,7 +56,6 @@ func update_ai(paddle, increase_difficulty: bool):
 		paddle.difficulty += 1
 		
 func start_lines(speed):
-	print(speed)
 	if speed > 1000:
 		$SpeedLines/Lines_Left.visible = true
 		$SpeedLines/Lines_Right.visible = false

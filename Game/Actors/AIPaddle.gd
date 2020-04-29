@@ -39,14 +39,14 @@ func set_target(_target):
 func reset_handicap():
 	max_speed = default_max_speed
 	acceleration = default_acceleration
-	stamina = stamina_ammount(difficulty)
+	stamina = stamina_amount(difficulty)
 	shield = shield_amount(difficulty)
 	if shield > 0:
 		$Sprite.set_texture(shield_texture)
 	else:
 		$Sprite.set_texture(normal_texture)
 		
-func stamina_ammount(difficult):
+func stamina_amount(difficult):
 	if difficulty <= 2: return 10 * difficulty + 60
 	if difficulty <= 5: return 10 * difficulty + 50
 	if difficulty <= 8: return 10 * difficulty + 50
@@ -56,10 +56,10 @@ func stamina_ammount(difficult):
 
 func shield_amount(difficulty):
 	if difficulty <= 2: return 0
-	if difficulty <= 5: return 2
-	if difficulty <= 8: return 3
-	if difficulty == 9: return 4
-	if difficulty == 10: return 5
+	if difficulty <= 5: return 3
+	if difficulty <= 8: return 4
+	if difficulty == 9: return 5
+	if difficulty == 10: return 6
 	return 0
 
 func get_direction():
