@@ -10,7 +10,6 @@ var is_stopped = false
 
 const MAX_VELOCITY = Vector2(3000.0, 200.0)
 var min_velocity = Vector2(0,0)
-const MAX_ANGLE = 45.0
 const ACCELERATION = 50
 
 const MIN_HITSTOP = 0.05
@@ -28,6 +27,7 @@ func _physics_process(delta: float) -> void:
 	if in_net:
 		$CollisionShape2D.queue_free()
 		$Sprite.queue_free()
+		$Trail.queue_free()
 		emit_signal("end_stop")
 		waiting_destruction = true
 		if abs(velocity.x) / 2000 > 0.2:

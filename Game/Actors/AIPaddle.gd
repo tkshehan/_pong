@@ -46,7 +46,7 @@ func reset_handicap():
 	else:
 		$Sprite.set_texture(normal_texture)
 		
-func stamina_amount(difficult):
+func stamina_amount(_difficulty):
 	if difficulty <= 2: return 10 * difficulty + 60
 	if difficulty <= 5: return 10 * difficulty + 50
 	if difficulty <= 8: return 10 * difficulty + 50
@@ -54,7 +54,7 @@ func stamina_amount(difficult):
 	if difficulty == 10: return 10 * difficulty + 50
 	return 0
 
-func shield_amount(difficulty):
+func shield_amount(_difficulty):
 	if difficulty <= 2: return 0
 	if difficulty <= 5: return 3
 	if difficulty <= 8: return 4
