@@ -8,8 +8,6 @@ func _ready():
 	# Handle window resizing to maintain pixel stretching
 	var _err = get_tree().connect("screen_resized", self, "_screen_resized")
 	GameState.root_scene = self
-	if OS.get_name() == "HTML5":
-		$GUI/FocusWindow.visible = true
 	
 	var splash_screen = load('res://SplashScreen.tscn').instance()
 	$GUI.add_child(splash_screen, true)
@@ -17,6 +15,8 @@ func _ready():
 
 func load_title():
 	var title = load("res://TitleScreen/TitleScreen.tscn").instance()
+	if OS.get_name() == "HTML5":
+		$GUI/FocusWindow.visible = true
 	$GUI.add_child(title, true)
 	
 func _on_start_1p():
