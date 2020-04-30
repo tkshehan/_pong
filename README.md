@@ -1,4 +1,4 @@
-[Click Here To Play](https://tkshehan.github.io/pong/pball.html)
+[------Click Here To Play------](https://tkshehan.github.io/pong/pball.html)
 
 ### Controls
 
@@ -8,12 +8,10 @@
 | Paddle Down | Down Arrow | S |
 | Pause | Space | Escape |
 
-### Known Issues
-- ball can be trapped between paddle and wall
-
 ## Patch Notes
 
 ### 0.0.4
+- visual ehancements to ball, sprite and effects
 - bugfix: game no longer unpauses when window regains focus
 - AI improvements
 - physics reworked, ball is much easier to control
